@@ -4,7 +4,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-// login路由
+// login
 const Login = resolve => require(['../views/login/'], resolve)
 
 export default new Router({
