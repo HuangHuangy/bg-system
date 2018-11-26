@@ -12,6 +12,7 @@ export default {
 </script>
 
 <style>
+  /* 引入字体*/
   @font-face {
     font-family: 'iconfont';  /* project id 936206 */
     src: url('//at.alicdn.com/t/font_936206_oikvyv5xsno.eot');

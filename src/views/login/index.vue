@@ -24,6 +24,7 @@
 <script>
 export default {
   data () {
+    // 邮箱验证
     var validateEmail = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入邮箱'))
