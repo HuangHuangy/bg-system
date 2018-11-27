@@ -5,7 +5,7 @@ import app from './modules/app'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
   },
   mutations: {
@@ -17,3 +17,4 @@ export default new Vuex.Store({
     app
   }
 })
+export default store
