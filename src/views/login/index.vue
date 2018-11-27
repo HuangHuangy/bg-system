@@ -15,7 +15,7 @@
         <el-input type="password" v-model="loginForm.pass" placeholder="密码" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button class="login-btn" type="primary" @click="submitForm('loginForm')">提交</el-button>
+        <el-button class="login-btn" type="primary" :loading="loading" @click="submitForm('loginForm')">提交</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -39,6 +39,7 @@ export default {
       }
     }
     return {
+      loading: false,
       loginForm: {
         email: '',
         pass: ''
@@ -57,7 +58,7 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          this.$router.push({path: '/dashboard'})
         } else {
           console.log('error submit!!')
           return false
