@@ -1,19 +1,21 @@
 <template>
     <div>
-        {{msg}}
     </div>
 </template>
 
 <script>
+import SidebarItem from '.././layout/SidebarItem'
 export default {
+  name: 'dashboard',
+  components: {SidebarItem},
   data () {
     return {
-      msg: '首页'
     }
+  },
+  methods: {
   }
 }
 </script>
 
 <style scoped>
-
 </style>
