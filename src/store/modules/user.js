@@ -1,6 +1,12 @@
 const user = {
-  state: {},
-  mutations: {},
+  state: {
+    userName: ''
+  },
+  mutations: {
+    setUserName (state, name) {
+      state.userName = name
+    }
+  },
   action: {
   }
 }
