@@ -8,6 +8,10 @@ const user = {
     }
   },
   action: {
+    LoginByEmail ({commit}, userInfo) {
+      return new Promise((resolve, reject) => {
+      })
+    }
   }
 }
 export default user
