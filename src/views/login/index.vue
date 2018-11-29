@@ -56,9 +56,13 @@ export default {
   },
   methods: {
     submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.$router.push({path: '/dashboard'})
+          this.$store.dispatch('LoginByEmail', this.loginForm).then(() => {
+            this.$router.push({path: '/dashboard'})
+          }).catch(() => {
+            console.log('error submit!!!')
+          })
         } else {
           console.log('error submit!!')
           return false

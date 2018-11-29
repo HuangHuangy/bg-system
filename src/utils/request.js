@@ -1,7 +1,7 @@
 // 封装axios
 import axios from 'axios'
-import store from '../store'
-import { getToken } from 'auth'
+import store from '@/store'
+import { getToken } from './auth'
 import {Message} from 'element-ui'
 
 // 创建axios实例
@@ -10,7 +10,7 @@ const service = axios.create({
   timeout: 5000 // request timeout 请求超时时间
 })
 
-// reques interceptor(拦截器) 对请求参数作处理
+// request interceptor(拦截器) 对请求参数作处理
 service.interceptors.request.use(config => {
   // Do something before request is sent
   if (store.getters.token) {

@@ -1,3 +1,5 @@
+import {login} from '@/api/login'
+
 const user = {
   state: {
     userName: ''
@@ -7,9 +9,13 @@ const user = {
       state.userName = name
     }
   },
-  action: {
+  actions: {
     LoginByEmail ({commit}, userInfo) {
+      const email = userInfo.email.trim()
       return new Promise((resolve, reject) => {
+        login(email, userInfo.pass).then((response) => {
+          console.log(response)
+        })
       })
     }
   }
