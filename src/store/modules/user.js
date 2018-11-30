@@ -14,7 +14,6 @@ const user = {
       const email = userInfo.email.trim()
       return new Promise((resolve, reject) => {
         login(email, userInfo.pass).then((response) => {
-          console.log(response, 'shuju')
           resolve()
         })
       })
