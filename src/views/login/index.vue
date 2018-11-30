@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     var validateEmail = (rule, value, callback) => {
@@ -53,6 +54,19 @@ export default {
         ]
       }
     }
+  },
+  mounted () {
+    // console.log(this.email, 'store')
+    console.log(localStorage.getItem('email'), 'localStorage')
+    if (this.email && this.email !== '') {
+      this.$router.push({path: '/dashboard'})
+    }
+  },
+  computed: {
+    // mapState工具函数会将store中的state映射到局部计算属性中
+    ...mapState({
+      'email': state => state.user.email
+    })
   },
   methods: {
     submitForm (formName) {
