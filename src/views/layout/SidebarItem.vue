@@ -1,9 +1,21 @@
 <!--子组件-->
 <template>
     <div>
-      <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-        <template  v-for="menu in menuData">
+      <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <template v-for="menu in menuData">
           <template v-if="menu.subs">
+            <!--在vue2.0.0+的版本中，使用v-for时，key是必须的，否则会报错，el-submenu标签上报错-->
+            <el-submenu :index="menu.index" :key="menu.index">
+              <template slot="title">
+                <i :class="menu.icon"></i>
+                <span>{{menu.title}}</span>
+              </template>
+              <template v-for="sub in subs">
+                <el-munu-item-group :index="sub.index" :key="sub.index">
+                  <span slot="title">sub.title</span>
+                </el-munu-item-group>
+              </template>
+            </el-submenu>
           </template>
         </template>
       </el-menu>

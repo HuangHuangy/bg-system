@@ -1,22 +1,52 @@
 const menuData = [
   {
-    icon: 'iconfont',
+    icon: 'el-icon-location',
     index: '1',
-    title: '产品',
-    sub: [
+    title: 'Example1',
+    subs: [
       {
-        index: '',
-        title: ''
+        icon: '',
+        index: 'table',
+        title: 'table'
       },
       {
-        index: '',
-        title: ''
+        icon: '',
+        index: 'form',
+        title: 'form'
       },
       {
-        index: '',
-        title: ''
+        icon: '',
+        index: 'tree',
+        title: 'tree'
       }
     ]
+  },
+  {
+    icon: 'el-icon-menu',
+    index: '2',
+    title: 'Example2',
+    subs: [
+      {
+        icon: '',
+        index: 'table',
+        title: 'table'
+      },
+      {
+        icon: '',
+        index: 'form',
+        title: 'form'
+      },
+      {
+        icon: '',
+        index: 'tree',
+        title: 'tree'
+      }
+    ]
+  },
+  {
+    icon: 'el-icon-document',
+    index: '3',
+    title: 'Example3'
   }
 ]
 
