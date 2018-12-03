@@ -1,40 +1,60 @@
 <!--子组件-->
 <template>
     <div>
-      <template>
-      </template>
-        <!--<el-submenu index="1">-->
-          <!--<template slot="title">-->
-            <!--<i class="el-icon-location"></i>-->
-            <!--<span slot="title">导航一</span>-->
-          <!--</template>-->
-          <!--<el-menu-item-group>-->
-            <!--<span slot="title">分组一</span>-->
-            <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
-            <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
-          <!--</el-menu-item-group>-->
-          <!--<el-menu-item-group title="分组2">-->
-            <!--<el-menu-item index="1-3">选项3</el-menu-item>-->
-          <!--</el-menu-item-group>-->
-          <!--<el-submenu index="1-4">-->
-            <!--<span slot="title">选项4</span>-->
-            <!--<el-menu-item index="1-4-1">选项1</el-menu-item>-->
-          <!--</el-submenu>-->
-        <!--</el-submenu>-->
+      <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <template  v-for="menu in menuData">
+          <template v-if="menu.subs">
+          </template>
+        </template>
+      </el-menu>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { getMenuData } from '@/api/menu'
 export default {
   name: 'SidebarItem',
-  props: { // 1.子组件在props中创建一个属性，用以接收父组件传过来的值
-    sidebarData: {
-      type: Array
+  // props: { // 1.子组件在props中创建一个属性，用以接收父组件传过来的值
+  //   sidebarData: {
+  //     type: Array
+  //   }
+  // },
+  data () {
+    return {
+      isCollapse: true,
+      menuData: []
+    }
+  },
+  mounted () {
+    this.getlist()
+  },
+  computed: {
+    // mapState工具函数会将store中的state映射到局部计算属性中
+    ...mapState({
+      'email': state => state.user.email
+    })
+  },
+  methods: {
+    getlist () {
+      getMenuData(this.email).then((res) => {
+        console.log(res, 'menu')
+        this.menuData = res.data
+      })
+    },
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
     }
   }
 }
 </script>
 
 <style scoped>
-
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>
