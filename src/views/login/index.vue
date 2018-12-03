@@ -23,6 +23,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import {login} from '@/api/login'
 export default {
   data () {
     var validateEmail = (rule, value, callback) => {
@@ -56,8 +57,6 @@ export default {
     }
   },
   mounted () {
-    // console.log(this.email, 'store')
-    console.log(localStorage.getItem('email'), 'localStorage')
     if (this.email && this.email !== '') {
       this.$router.push({path: '/dashboard'})
     }
@@ -72,13 +71,14 @@ export default {
     submitForm (formName) {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.loading = true
-          this.$store.dispatch('LoginByEmail', this.loginForm).then(() => {
-            this.loading = false
-            this.$router.push({path: '/dashboard'})
-          }).catch(() => {
-            this.loading = false
-            console.log('error submit!!!')
+          const email = this.loginForm.email
+          const pass = this.loginForm.pass
+          login(email, pass).then((response) => {
+            console.log(response)
+            if (response.data.status === 1) {
+              this.$store.commit('SET_EMAIL', email)
+              this.$router.push({path: '/dashboard'})
+            }
           })
         } else {
           console.log('error submit!!')

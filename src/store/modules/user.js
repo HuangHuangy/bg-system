@@ -1,5 +1,3 @@
-import {login} from '@/api/login'
-
 const user = {
   state: {
     email: localStorage.getItem('email')
@@ -12,16 +10,9 @@ const user = {
   },
   actions: {
     LoginByEmail ({commit}, userInfo) {
-      const email = userInfo.email.trim()
+      // const email = userInfo.email.trim()
       return new Promise((resolve, reject) => {
-        login(email, userInfo.pass).then((response) => {
-          if (response.data.status === 1) {
-            commit('SET_EMAIL', email)
-          }
-          resolve()
-        }).catch(error => {
-          reject(error)
-        })
+        resolve()
       })
     }
   }
