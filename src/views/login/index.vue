@@ -5,13 +5,13 @@
       <el-form-item
         class="login-input"
         prop="email">
-        <span class="iconfont">&#xe608;</span>
+        <span class="iconfont icon-user"></span>
         <el-input class="" v-model="loginForm.email" placeholder="用户名"></el-input>
       </el-form-item>
       <el-form-item
         class="login-input"
         prop="pass">
-        <span class="iconfont">&#xe603;</span>
+        <span class="iconfont icon-mimaffffffpx"></span>
         <el-input type="password" v-model="loginForm.pass" placeholder="密码" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
