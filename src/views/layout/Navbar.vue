@@ -50,6 +50,7 @@ export default {
     getlist () {
       getUserInfo(this.email).then((res) => {
         console.log(res)
+        this.imageUrl = res.data.admin.avatar
       })
     },
     logOut () {
