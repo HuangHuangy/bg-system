@@ -5,7 +5,7 @@ Vue.use(Router)
 
 // login
 const Login = resolve => require(['../views/login/'], resolve)
-const dashboard = resolve => require(['../views/layout/SidebarItem'], resolve)
+const dashboard = resolve => require(['../views/layout/Sidebar'], resolve)
 
 export default new Router({
   routes: [
