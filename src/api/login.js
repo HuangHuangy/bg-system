@@ -12,3 +12,10 @@ export function login (username, password) {
     data
   })
 }
+export function getUserInfo (username) {
+  return request({
+    url: '/login/login',
+    method: 'get',
+    params: { username }
+  })
+}

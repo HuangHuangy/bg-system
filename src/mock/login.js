@@ -11,5 +11,9 @@ export default {
   login: config => {
     // const { username } = JSON.parse(config.body)
     return loginData
+  },
+  getUserInfo: config => {
+    console.log(config, 'config')
+    return loginData
   }
 }

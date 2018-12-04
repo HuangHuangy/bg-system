@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import {getUserInfo} from '@/api/login'
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
@@ -28,11 +31,28 @@ export default {
       imageUrl: ''
     }
   },
+  mounted () {
+    console.log(this.email)
+    this.getlist()
+  },
+  computed: {
+    // mapState工具函数会将store中的state映射到局部计算属性中
+    ...mapState({
+      'email': state => state.user.email
+    })
+  },
   methods: {
     iconChange () {
       setTimeout(() => {
         this.isShow = !this.isShow
       }, 500)
+    },
+    getlist () {
+      getUserInfo(this.email).then((res) => {
+        console.log(res)
+      })
+    },
+    logOut () {
     }
   }
 }
