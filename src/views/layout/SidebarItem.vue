@@ -1,7 +1,8 @@
 <!--子组件-->
 <template>
     <div>
-      <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <!--:default-active="activeMenu"-->
+      <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" router>
         <template v-for="menu in menuData">
           <template v-if="menu.subs">
             <!--在vue2.0.0+的版本中，使用v-for时，key是必须的，否则会报错，el-submenu标签上报错-->
@@ -10,12 +11,29 @@
                 <i :class="menu.icon"></i>
                 <span>{{menu.title}}</span>
               </template>
-              <template v-for="sub in subs">
-                <el-munu-item-group :index="sub.index" :key="sub.index">
-                  <span slot="title">sub.title</span>
-                </el-munu-item-group>
+              <template v-for="sub in menu.subs">
+                <template v-if="sub.subs">
+                  <el-submenu :index="sub.index" :key="sub.index">
+                    <span slot="title"><i :class="sub.icon"></i>{{sub.title}}</span>
+                    <template v-for="childred in sub.subs">
+                      <el-menu-item :index="childred.index" :key="childred.index">{{childred.title}}</el-menu-item>
+                    </template>
+                  </el-submenu>
+                </template>
+                <template v-else>
+                  <el-menu-item :index="sub.index" :key="sub.index">
+                    <i :class="sub.icon"></i>
+                    {{sub.title}}
+                  </el-menu-item>
+                </template>
               </template>
             </el-submenu>
+          </template>
+          <template v-else>
+            <el-menu-item :index="menu.index" :key="menu.index">
+              <i :class="menu.icon"></i>
+              <span slot="title">{{menu.title}}</span>
+            </el-menu-item>
           </template>
         </template>
       </el-menu>
@@ -34,7 +52,7 @@ export default {
   // },
   data () {
     return {
-      isCollapse: true,
+      isCollapse: false,
       menuData: []
     }
   },
@@ -46,11 +64,13 @@ export default {
     ...mapState({
       'email': state => state.user.email
     })
+    // activeMenu () {
+    //   return this.$route.path.slice(1)
+    // }
   },
   methods: {
     getlist () {
       getMenuData(this.email).then((res) => {
-        console.log(res, 'menu')
         this.menuData = res.data
       })
     },
@@ -67,6 +87,7 @@ export default {
 <style scoped>
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
+    height: 100vh;
     min-height: 400px;
   }
 </style>
