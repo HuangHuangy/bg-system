@@ -1,17 +1,17 @@
 <template>
-    <div>
-      <div @click="iconChange">
+    <div class="Navbar">
+      <div class="menu-control" @click="iconChange">
          <i class="iconfont icon-caidan-zhankai" v-show="isShow"></i>
          <i class="iconfont icon-caidan-shouqi" v-show="!isShow"></i>
          Dashboard
       </div>
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" class="user-info">
         <span class="el-dropdown-link">
-          <img :src="imageUrl" alt=""><i class="el-icon-arrow-down el-icon--right"></i>
+          <img :src="imageUrl" alt=""><i class="el-icon-caret-bottom el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
-            <el-dropdown-item>Home</el-dropdown-item>
+            <el-dropdown-item class="back-home">Home</el-dropdown-item>
           </router-link>
           <el-dropdown-item @click="logOut">LogOut</el-dropdown-item>
         </el-dropdown-menu>
@@ -45,7 +45,7 @@ export default {
     iconChange () {
       setTimeout(() => {
         this.isShow = !this.isShow
-      }, 500)
+      }, 300)
     },
     getlist () {
       getUserInfo(this.email).then((res) => {
@@ -60,4 +60,26 @@ export default {
 </script>
 
 <style scoped>
+  .Navbar{
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+  }
+  .Navbar .menu-control{
+    display: inline-block;
+    line-height: 50px;
+  }
+  .Navbar .menu-control i{
+    padding: 0 10px;
+  }
+  .Navbar .user-info{
+    position: absolute;
+    right: 35px;
+  }
+  .user-info span img{
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
 </style>

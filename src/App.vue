@@ -15,4 +15,10 @@ export default {
   .login .el-input__inner{
     padding-left: 40px;
   }
+  body{
+    margin: 0;
+  }
+  .router-link-active{
+    text-decoration: none;
+  }
 </style>
