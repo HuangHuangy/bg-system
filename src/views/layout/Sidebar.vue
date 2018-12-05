@@ -1,7 +1,7 @@
 <!--父组件-->
 <template>
   <!--:default-active="activeMenu"-->
-    <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" router>
+    <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="pink" :collapse="isCollapse" router>
       <!--3.在子组件标签中添加子组件props中创建的属性  4.把需要传给子组件的值赋值给该属性-->
       <sidebar-item :menuData="menuData"></sidebar-item>
     </el-menu>

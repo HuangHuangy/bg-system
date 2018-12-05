@@ -5,7 +5,7 @@ Vue.use(Router)
 
 // login
 const Login = resolve => require(['../views/login/'], resolve)
-const dashboard = resolve => require(['../views/layout/Navbar'], resolve)
+const dashboard = resolve => require(['../views/layout/index'], resolve)
 
 export default new Router({
   routes: [
@@ -17,7 +17,9 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: dashboard
+      component: dashboard,
+      children: [
+      ]
     }
   ]
 })

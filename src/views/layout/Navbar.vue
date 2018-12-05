@@ -1,8 +1,8 @@
 <template>
     <div class="Navbar">
       <div class="menu-control" @click="iconChange">
-         <i class="iconfont icon-caidan-zhankai" v-show="isShow"></i>
-         <i class="iconfont icon-caidan-shouqi" v-show="!isShow"></i>
+         <i class="iconfont icon-caidan-shouqi" v-show="isShow"></i>
+         <i class="iconfont icon-caidan-zhankai" v-show="!isShow"></i>
          Dashboard
       </div>
       <el-dropdown trigger="click" class="user-info">
