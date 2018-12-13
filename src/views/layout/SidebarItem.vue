@@ -1,13 +1,17 @@
 <!--子组件-->
 <template>
-    <div>
+  <el-menu class="el-menu-vertical-demo"
+           @changeCollapse="updateCollapse"
+           background-color="pink"
+           :collapse="isCollapse"
+           router>
         <template v-for="menu in menuData">
           <template v-if="menu.subs">
             <!--在vue2.0.0+的版本中，使用v-for时，key是必须的，否则会报错，el-submenu标签上报错-->
             <el-submenu :index="menu.index" :key="menu.index">
               <template slot="title">
                 <i :class="menu.icon"></i>
-                <span>{{menu.title}}</span>
+                <span slot="title">{{menu.title}}</span>
               </template>
               <template v-for="sub in menu.subs">
                 <template v-if="sub.subs">
@@ -34,20 +38,52 @@
             </el-menu-item>
           </template>
         </template>
-    </div>
+  </el-menu>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { getMenuData } from '@/api/menu'
 export default {
   name: 'SidebarItem',
-  props: { // 1.子组件在props中创建一个属性，用以接收父组件传过来的值
-    menuData: {
-      type: Array
+  props: ['isCollapse'], // 1.子组件在props中创建一个属性，用以接收父组件传过来的值
+  data () {
+    return {
+      // isCollapse: true,
+      menuData: []
     }
+  },
+  mounted () {
+    this.getlist()
+  },
+  computed: {
+    // mapState工具函数会将store中的state映射到局部计算属性中
+    ...mapState({
+      'email': state => state.user.email
+    })
+    // activeMenu () {
+    //   return this.$route.path.slice(1)
+    // }
+  },
+  methods: {
+    getlist () {
+      getMenuData(this.email).then((res) => {
+        this.menuData = res.data
+      })
+    }
+    // ,
+    // updateCollapse (data) {
+    //   console.log(data, 'Sidebar')
+    //   this.isCollapse = data.Collapse
+    // }
   }
 }
 </script>
 
 <style scoped>
-
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+    height: 100vh;
+  }
 </style>

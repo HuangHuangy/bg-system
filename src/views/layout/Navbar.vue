@@ -1,8 +1,8 @@
 <template>
     <div class="Navbar">
-      <div class="menu-control" @click="iconChange">
-         <i class="iconfont icon-caidan-shouqi" v-show="isShow"></i>
-         <i class="iconfont icon-caidan-zhankai" v-show="!isShow"></i>
+      <div class="menu-control" @click="iconChange()" >
+         <i class="iconfont icon-caidan-zhankai" v-show="isShow"></i>
+         <i class="iconfont icon-caidan-shouqi" v-show="!isShow"></i>
          Dashboard
       </div>
       <el-dropdown trigger="click" class="user-info">
@@ -28,7 +28,8 @@ export default {
     return {
       msg: 'Hello World',
       isShow: true,
-      imageUrl: ''
+      imageUrl: '',
+      isCollapse: false
     }
   },
   mounted () {
@@ -42,9 +43,16 @@ export default {
     })
   },
   methods: {
-    iconChange () {
+    iconChange (data) {
+      console.log(111)
       setTimeout(() => {
         this.isShow = !this.isShow
+        this.isCollapse = !this.isCollapse
+        let data = {
+          Collapse: this.isCollapse
+        }
+        this.$emit('changeCollapse', data)
+        console.log(data, 'hahah')
       }, 300)
     },
     getlist () {

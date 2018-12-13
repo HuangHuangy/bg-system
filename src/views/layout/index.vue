@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="navbar">
-          <Navbar></Navbar>
+          <Navbar @changeCollapse="updateCollapse"></Navbar>
         </div>
         <div class="sidebar">
-          <sidebar></sidebar>
+          <sidebar-item :isCollapse="isCollapse"></sidebar-item>
         </div>
         <div class="content">
           <router-view></router-view>
@@ -13,13 +13,22 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar'
+// import Sidebar from './Sidebar'
 import Navbar from './Navbar'
+import SidebarItem from './SidebarItem'
 export default {
-  components: {Sidebar, Navbar},
+  name: 'index',
+  // components: {SidebarItem, Sidebar, Navbar},
+  components: {SidebarItem, Navbar},
   data () {
     return {
-      msg: 'Hello World'
+      isCollapse: ''
+    }
+  },
+  methods: {
+    updateCollapse (data) {
+      console.log(data, 'Sidebar')
+      this.isCollapse = data.Collapse
     }
   }
 }
@@ -36,4 +45,8 @@ export default {
     left: 0;
     top: 0;
   }
+  .el-menu--collapse{
+    height: 100vh;
+  }
+
 </style>
