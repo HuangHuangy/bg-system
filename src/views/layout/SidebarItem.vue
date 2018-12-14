@@ -71,11 +71,6 @@ export default {
         this.menuData = res.data
       })
     }
-    // ,
-    // updateCollapse (data) {
-    //   console.log(data, 'Sidebar')
-    //   this.isCollapse = data.Collapse
-    // }
   }
 }
 </script>

@@ -28,8 +28,7 @@ export default {
     return {
       msg: 'Hello World',
       isShow: true,
-      imageUrl: '',
-      isCollapse: false
+      imageUrl: ''
     }
   },
   mounted () {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="navbar">
+        <div :class="{navbar: !isCollapse, hideNavbar: isCollapse}">
           <Navbar @changeCollapse="updateCollapse"></Navbar>
         </div>
         <div class="sidebar">
@@ -22,7 +22,7 @@ export default {
   components: {SidebarItem, Navbar},
   data () {
     return {
-      isCollapse: ''
+      isCollapse: false
     }
   },
   methods: {
@@ -37,6 +37,9 @@ export default {
 <style scoped>
   .navbar{
     margin-left: 200px;
+  }
+  .hideNavbar{
+    margin-left: 64px;
   }
   .sidebar{
     display: inline-block;
