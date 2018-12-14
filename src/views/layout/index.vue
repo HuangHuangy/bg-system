@@ -1,13 +1,13 @@
 <template>
     <div>
+      <div class="sidebar">
+        <sidebar-item :isCollapse="isCollapse"></sidebar-item>
+      </div>
         <div :class="{navbar: !isCollapse, hideNavbar: isCollapse}">
           <Navbar @changeCollapse="updateCollapse"></Navbar>
-        </div>
-        <div class="sidebar">
-          <sidebar-item :isCollapse="isCollapse"></sidebar-item>
-        </div>
-        <div class="content">
-          <router-view></router-view>
+          <div class="content">
+            <router-view></router-view>
+          </div>
         </div>
     </div>
 </template>
@@ -40,6 +40,7 @@ export default {
   }
   .hideNavbar{
     margin-left: 64px;
+    transition: margin-left .28s;
   }
   .sidebar{
     display: inline-block;
