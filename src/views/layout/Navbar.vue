@@ -77,7 +77,7 @@ export default {
     line-height: 50px;
   }
   .Navbar .menu-control i{
-    padding: 0 10px;
+    /*padding: 0 10px;*/
   }
   .Navbar .user-info{
     position: absolute;

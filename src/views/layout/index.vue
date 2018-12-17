@@ -36,10 +36,10 @@ export default {
 
 <style scoped>
   .navbar{
-    margin-left: 200px;
+    margin-left: 220px;
   }
   .hideNavbar{
-    margin-left: 64px;
+    margin-left: 84px;
     transition: margin-left .28s;
   }
   .sidebar{
