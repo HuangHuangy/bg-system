@@ -13,6 +13,7 @@ const menu1 = resolve => require(['../views/nested/menu1/menu1-1'], resolve)
 const menu2 = resolve => require(['../views/nested/menu1/menu1-2'], resolve)
 const menu3 = resolve => require(['../views/nested/menu1/menu1-3'], resolve)
 const menu4 = resolve => require(['../views/nested/menu2/index'], resolve)
+const barbasic = resolve => require(['../views/echartExample/bar'], resolve)
 
 export default new Router({
   routes: [
@@ -60,6 +61,11 @@ export default new Router({
           path: '/menu2',
           name: 'menu2',
           component: menu4
+        },
+        {
+          path: '/bar-basic',
+          name: 'bar-basic',
+          component: barbasic
         }
       ]
     }

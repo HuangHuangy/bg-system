@@ -17,6 +17,18 @@ const menuData = [
     ]
   },
   {
+    icon: 'el-icon-document',
+    index: '2',
+    title: 'echarts',
+    subs: [
+      {
+        icon: 'el-icon-document',
+        index: 'bar-basic',
+        title: 'bar'
+      }
+    ]
+  },
+  {
     icon: 'el-icon-menu',
     index: 'form',
     title: 'Form'
