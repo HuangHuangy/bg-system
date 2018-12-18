@@ -1,7 +1,6 @@
 <!--子组件-->
 <template>
   <el-menu class="el-menu-vertical-demo"
-           @changeCollapse="updateCollapse"
            background-color="pink"
            :collapse="isCollapse"
            router>
