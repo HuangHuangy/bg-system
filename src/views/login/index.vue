@@ -74,7 +74,6 @@ export default {
           const email = this.loginForm.email
           const pass = this.loginForm.pass
           login(email, pass).then((response) => {
-            console.log(response)
             if (response.data.status === 1) {
               this.$store.commit('SET_EMAIL', email)
               this.$router.push({path: '/dashboard'})

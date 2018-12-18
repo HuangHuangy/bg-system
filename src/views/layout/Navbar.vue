@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     iconChange (data) {
-      console.log(111)
       setTimeout(() => {
         this.isShow = !this.isShow
         this.isCollapse = !this.isCollapse
@@ -51,12 +50,10 @@ export default {
           Collapse: this.isCollapse
         }
         this.$emit('changeCollapse', data)
-        console.log(data, 'hahah')
       }, 300)
     },
     getlist () {
       getUserInfo(this.email).then((res) => {
-        console.log(res)
         this.imageUrl = res.data.admin.avatar
       })
     },
@@ -77,7 +74,7 @@ export default {
     line-height: 50px;
   }
   .Navbar .menu-control i{
-    /*padding: 0 10px;*/
+    padding-right: 10px;
   }
   .Navbar .user-info{
     position: absolute;

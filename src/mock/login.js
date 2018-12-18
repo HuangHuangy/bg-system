@@ -13,7 +13,6 @@ export default {
     return loginData
   },
   getUserInfo: config => {
-    console.log(config, 'config')
     return loginData
   }
 }

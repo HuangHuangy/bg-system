@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     updateCollapse (data) {
-      console.log(data, 'Sidebar')
       this.isCollapse = data.Collapse
     }
   }
