@@ -10,34 +10,55 @@ require('echarts/lib/chart/bar')
 export default {
   data () {
     return {
-      msg: 'form'
+      msg: 'form',
+      cb: {
+        categories: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+        data: [5, 20, 36, 10, 10, 20]
+      }
     }
   },
   mounted () {
     this.initChart()
+    this.fetchData(this.cb)
   },
   methods: {
     // 先建一个简单的图表
     initChart () {
       this.chart = echarts.init(this.$el, 'bar')
-      this.chart.setOption({
+      const option = {
         title: {
-          text: 'Echarts 入门示例'
+          text: ''
         },
         tooltip: {},
         legend: {
           data: ['销量']
         },
         xAxis: {
-          data: ['衬衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          data: []
         },
         yAxis: {},
         series: [{
-          name: '',
+          name: '销量',
           type: 'bar',
-          data: [5, 20, 36, 10, 10]
+          data: []
         }]
-      })
+      }
+      this.chart.setOption(option)
+    },
+    fetchData (data) {
+      this.chart.showLoading()
+      setTimeout(() => {
+        this.chart.hideLoading()
+        this.chart.setOption({
+          xAxis: {
+            data: data.categories
+          },
+          series: [{
+            name: '销量',
+            data: data.data
+          }]
+        })
+      }, 3000)
     }
   }
 }
