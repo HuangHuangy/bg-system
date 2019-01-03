@@ -13,14 +13,14 @@
           <router-link to="/">
             <el-dropdown-item class="back-home">Home</el-dropdown-item>
           </router-link>
-          <el-dropdown-item @click="logOut">LogOut</el-dropdown-item>
+          <el-dropdown-item @click.native="logOut()">LogOut</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
 </template>
 
 <script>
-import {getUserInfo} from '@/api/login'
+import {getUserInfo, logout} from '@/api/login'
 import { mapState } from 'vuex'
 
 export default {
@@ -33,7 +33,11 @@ export default {
   },
   mounted () {
     console.log(this.email)
-    this.getlist()
+    if (this.email) {
+      this.getlist()
+    } else {
+      // this.$router.push({path: '/'})
+    }
   },
   computed: {
     // mapState工具函数会将store中的state映射到局部计算属性中
@@ -58,6 +62,11 @@ export default {
       })
     },
     logOut () {
+      logout().then((res) => {
+        this.$store.commit('SET_EMAIL', '')
+        this.$router.push({path: '/'})
+        // location.reload()// In order to re-instantiate the vue-router object to avoid bugs
+      })
     }
   }
 }

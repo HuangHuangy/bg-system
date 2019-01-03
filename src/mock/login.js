@@ -14,5 +14,6 @@ export default {
   },
   getUserInfo: config => {
     return loginData
-  }
+  },
+  logout: () => 'success'
 }

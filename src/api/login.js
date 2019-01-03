@@ -19,3 +19,9 @@ export function getUserInfo (username) {
     params: { username }
   })
 }
+export function logout () {
+  return request({
+    url: '/login/logout',
+    method: 'post'
+  })
+}
